@@ -35,7 +35,7 @@ public class ParallelStreamEjemplo1 {
         long starTime = System.currentTimeMillis();
         List<String> studentActivities = StudentDataBase.getAllStudents().stream()//aca el stream de studiantes
                 .parallel()
-                .map(Student::getActivities) //transformamo a strean de listas de string
+                .map(Student::getActivities) //transformamos a stream de listas de string
                 .flatMap(List::stream)//aca usamos el map para convertir a stream<String>
                 .distinct()
                 .sorted()
