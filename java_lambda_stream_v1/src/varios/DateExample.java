@@ -15,6 +15,22 @@ import java.util.function.Function;
 public class DateExample {
 
     public static void convertirHoraAFechaCompleta () throws ParseException {
+
+        /*// forma pra setear la zona horaria especifica fecha actual completa zona horaria de santiago
+        String fechaActual = LocalDate.now(ZoneId.of(TIME_ZONE)).format(normalDateFormater);
+        String horaActual = LocalTime.now(ZoneId.of(TIME_ZONE)).format(normalHourFormater);
+        String present = horaActual + " " + fechaActual;
+        Date presentTimeHahahaha = dateFormat.parse(present);
+
+        //start date
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern(NORMAL_DATE_PATTERN);
+        String hours = myInfo.getExtraArgs().getJSONObject(SHUTDOWN_KEY).getString(START_TIME_KEY);
+        String normalDate = LocalDate.now(ZoneId.of(TIME_ZONE)).format(dateTimeFormatter);
+        String fullDate = hours + " " + normalDate;
+        Date fullStartTime = dateFormat.parse(fullDate);
+
+        //end date
+        Date endsTime = Date.from(fullStartTime.toInstant().plus(executeInXminutes.orElse(0),ChronoUnit.MINUTES));*/
         Date timestamp = Calendar.getInstance(TimeZone.getTimeZone("America/Santiago")).getTime();
 
         System.out.println("timestamp " + timestamp);
