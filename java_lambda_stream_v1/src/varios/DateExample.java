@@ -11,6 +11,7 @@ import java.time.temporal.ChronoUnit;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Function;
+import java.util.stream.Collectors;
 
 public class DateExample {
 
@@ -98,11 +99,66 @@ public class DateExample {
         }
     }
 
+    public static void generatePresentDateByFormat(String format){
+
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(format,Locale.ENGLISH);
+        String date = simpleDateFormat.format(new Date()).toLowerCase();
+
+        System.out.println("Fecha actual:  " + date);
+
+    }
+
 
     public static void main(String[] args) throws ParseException {
+/*        final String PATTERN_DATE = "HH:mm dd.MM.yyyy";
+        final String PATTERN_HOUR = "HH:mm";
+        DateFormat dateFormat = new SimpleDateFormat(PATTERN_DATE);*/
+
+        String pattern = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'";
+        Date dateObj = new Date();
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+        String date = simpleDateFormat.format(new Date());
+
+        System.out.println("Fecha actual " + date);
+
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.ENGLISH);
+        format.setTimeZone(TimeZone.getTimeZone("UTC"));
+        String date2 = format.format(new Date());
+
+        System.out.println("fecha "  + date2);
+/*        final String SHUTDOWN_KEY = "shutdown";
+        final String START_TIME_KEY = "start_time";
+        final String RUN_AGAIN_IN = "runAgainIn";
+        final String UTC_SUBSTRACT_KEY = "utc_substract";
+        final String PATTERN_DATE = "HH:mm dd.MM.yyyy";
+        final String PATTERN_HOUR = "HH:mm";
+
+        String normalPattern = "dd.MM.yyyy";
+        final int ejecutarDentroXminutos = 140;
+        final String timeZone = "America/Santiago";
+        DateFormat dateFormat = new SimpleDateFormat(normalPattern);
+        //dia actual
+        Date fechActual = Calendar.getInstance(TimeZone.getTimeZone(timeZone)).getTime();
+
+        Calendar c = Calendar.getInstance();
+
+
+        c.setTimeInMillis(fechActual.getTime());
+        System.out.println("Get time " + dateFormat.format(fechActual));
+
+        List<String> testCodigos = Arrays.stream("asdasd;dasdasd;".split(";")).collect(Collectors.toList());
+        String [] sdsds = new String[] { "cl.falabella.admmon.model.siebel", "cl.falabella.admmon.dto.salesforce.model" };
+        for(int iiii = 0; iiii < sdsds.length; iiii++){
+            System.out.println("---------> " + sdsds[iiii]);
+        }
+
+        for(int i = 0; i < testCodigos.size(); i++){
+            System.out.println("Codigo --> " + testCodigos.get(i));
+        }*/
+
 
         //convertirHoraAFechaCompleta();
-        funcReal();
+        //funcReal();
         /*String time1 = "10:00";
         String time2 = "12:30";
         Map<String, String> mapHours = new HashMap<>();

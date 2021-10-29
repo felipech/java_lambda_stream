@@ -25,7 +25,7 @@ public class OptionalEjemplo {
             System.out.println(stringOptional.get());
 
         }else {
-            System.out.println("No se encontro el nombre del studiante");
+            System.out.println("No se encontro el nombre del estudiante");
         }
 
 
