@@ -9,9 +9,6 @@ import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.util.*;
-import java.util.concurrent.TimeUnit;
-import java.util.function.Function;
-import java.util.stream.Collectors;
 
 public class DateExample {
 
@@ -67,6 +64,62 @@ public class DateExample {
 
     }
 
+    public static void funcionDetencionEntreHoras() throws ParseException {
+
+        String start_time = "12:21";
+
+        String end_time = "03:00";
+
+        //necesito la hora actual
+        final String timeZone = "America/Santiago";
+        String hora_actual;
+        final String PATTERN_HOUR = "HH:mm";
+        Date presentTimeHahahaha = Calendar.getInstance(TimeZone.getTimeZone(timeZone)).getTime();
+        int hour = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
+        int minto = Calendar.getInstance().get(Calendar.MINUTE);
+
+        int startHour = Integer.parseInt(start_time.split(":")[0]);
+        int startMinute = Integer.parseInt(start_time.split(":")[1]);
+
+        int endHour = Integer.parseInt(end_time.split(":")[0]);
+        int endMinute = Integer.parseInt(end_time.split(":")[1]);
+
+        String ejemplo = "30-11- 2021 00:00:00";
+        String[] s = ejemplo.split(" ");
+        String[] s1 = ejemplo.replace("-", "/").split(" ");
+
+        int from = 900;
+        int to = 1000;
+        Date date = new Date();
+        Calendar c = Calendar.getInstance();
+        c.setTime(date);
+        int t = c.get(Calendar.HOUR_OF_DAY) * 100 + c.get(Calendar.MINUTE);
+        boolean isBetween = to > from && t >= from && t <= to || to < from && (t >= from || t <= to);
+
+        System.out.println("isbetween " + isBetween);
+
+
+        System.out.println(s1[0] + s1[1]);
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy");
+
+        //String fechaFinal = simpleDateFormat.format(ejemplo);
+
+        //System.out.println("fecha final : " + fechaFinal);
+        DateFormat dateFormat = new SimpleDateFormat(PATTERN_HOUR);
+
+
+        System.out.println( "hora actual: " + hour + " minuto actual " + minto);
+        System.out.println( "hora partida : " + startHour + " minuto partida " + startMinute);
+        System.out.println( "hora final: " + endHour + " minuto final " + endMinute);
+
+
+
+
+
+
+
+    }
+
 
     public static void funcReal() throws ParseException {
 
@@ -108,13 +161,47 @@ public class DateExample {
 
     }
 
+    public static String formatearFechaSegunPatron(String fechaActual, String pattern) throws ParseException {
+        SimpleDateFormat formatter = new SimpleDateFormat(pattern);
+
+        Date date = formatter.parse(fechaActual);
+
+        return date.toString();
+    }
+
+    public static String getPresentDateWithPattern(String pattern){
+        //String pattern = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'";
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+        return simpleDateFormat.format(new Date());
+
+    }
 
     public static void main(String[] args) throws ParseException {
+
+
+
+        funcionDetencionEntreHoras();
+
+
 /*        final String PATTERN_DATE = "HH:mm dd.MM.yyyy";
         final String PATTERN_HOUR = "HH:mm";
         DateFormat dateFormat = new SimpleDateFormat(PATTERN_DATE);*/
+       /* String pattern = "yyyy-MM-dd";
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
 
-        String pattern = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'";
+        String date = simpleDateFormat.format(new Date());
+        System.out.println("fecha " + getPresentDateWithPattern(pattern));*/
+
+
+       // SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        //String date = simpleDateFormat.format("2021-11-22 00:00:00.0").toLowerCase();
+        //System.out.println("ejemplo " + "2021-11-22 00:00:00.0".split(" ")[0]);
+        //System.out.println("date: " + date);
+        //System.out.println("Fecha : " + formatearFechaSegunPatron("12-11-2021 00:00:00", "yyyy-MM-dd"));
+
+
+
+/*        String pattern = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'";
         Date dateObj = new Date();
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
         String date = simpleDateFormat.format(new Date());
@@ -125,7 +212,7 @@ public class DateExample {
         format.setTimeZone(TimeZone.getTimeZone("UTC"));
         String date2 = format.format(new Date());
 
-        System.out.println("fecha "  + date2);
+        System.out.println("fecha "  + date2);*/
 /*        final String SHUTDOWN_KEY = "shutdown";
         final String START_TIME_KEY = "start_time";
         final String RUN_AGAIN_IN = "runAgainIn";

@@ -83,11 +83,17 @@ public class StringManipulation {
 
     public static void main(String[] args) {
 
-        System.out.println(java.lang.Thread.activeCount());
+        /*System.out.println(java.lang.Thread.activeCount());
         String srttttt = "CALLE TRES & VEINTE 187",fix = "";
         System.out.println("srttttt --> " + fix);
         System.out.println(" 1 - " + removeCharsSpecials("JAIME GUZMAN 102 ROSARIO INT CASARENGO(EN GOOGLE MAPS SALE COMO \"CALLE B\")"));
-        System.out.println(" 2 - " + secondFormRemoveCharsSpecials("CERRO O'HIGGINS 2774"));
+        System.out.println(" 2 - " + secondFormRemoveCharsSpecials("CERRO O'HIGGINS 2774"));*/
+
+        String vale = "Vale;Vista";
+        String[] splitValeVista = vale.split(";");
+        System.out.println(splitValeVista[0]   + " ----- " + splitValeVista[1]);
+
+        System.out.println("Resultado " + vale.equals("Vale Vista"));
 
 
     }
